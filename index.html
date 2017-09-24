@@ -65,7 +65,7 @@
 
 		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/Detector.js"></script>
 		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/libs/stats.min.js"></script>
-		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/libs/zlib_and_gzip.min.js"></script>
+		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/libs/gunzip.min.js"></script>
 		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/libs/dat.gui.min.js"></script>
 
 		<script>
@@ -108,7 +108,8 @@
 				camera.add( dirLight.target );
 
 				var loader = new THREE.NRRDLoader();
-				loader.load( "https://rawgit.com/valentina-s/volumeJS/master/data/eye.nrrd", function ( volume ) {
+				//loader.load( "https://rawgit.com/valentina-s/volumeJS/master/data/eye.nrrd", function ( volume ) {
+				loader.load( "data/eye.nrrd", function ( volume ) {
 				//loader.load( "data/eye.nrrd", function ( volume ) {
 					var geometry,
 						canvas,
@@ -167,7 +168,7 @@
 				var vtkmaterial = new THREE.MeshLambertMaterial( {wireframe : false, morphTargets : false, side : THREE.DoubleSide, color : 0xff0000} );
 
 				var vtkloader = new THREE.VTKLoader();
-				/*vtkloader.load( "models/vtk/liver.vtk", function ( geometry ) {
+				vtkloader.load( "data/test.vtk", function ( geometry ) {
 
 					geometry.computeVertexNormals();
 
@@ -182,7 +183,7 @@
 					});
 
 				} );
-				*/
+
 				// renderer
 
 				renderer = new THREE.WebGLRenderer( { antialias: false, alpha: true } );
