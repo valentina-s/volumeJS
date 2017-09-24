@@ -69,7 +69,7 @@
 				camera.add( dirLight.target );
 				var material = new THREE.MeshLambertMaterial( { color: 0xffffff, side: THREE.DoubleSide } );
 				var loader = new THREE.VTKLoader();
-				loader.load( "data/test_toy.vtk", function ( geometry ) {
+				loader.load( "https://raw.githubusercontent.com/valentina-s/volumeJS/vtk_loader/data/test_toy.vtk", function ( geometry ) {
 
 					geometry.computeVertexNormals();
 					geometry.center();
