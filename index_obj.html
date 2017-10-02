@@ -170,8 +170,16 @@
 				var vtkmaterial = new THREE.MeshLambertMaterial( {wireframe : false, morphTargets : false, side : THREE.DoubleSide, color : 0xff0000} );
 
 				var vtkloader = new THREE.OBJLoader();
+        var material = new THREE.MeshBasicMaterial({color: 'yellow', side: THREE.DoubleSide});
 
 				vtkloader.load( "data/swc2vol2surf.obj", function (object ) {
+					object.traverse(function (child) {
+
+            if (child instanceof THREE.Mesh) {
+                child.material = material;
+            }
+
+        });
 
 					//geometry.computeVertexNormals();
 
