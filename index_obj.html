@@ -111,7 +111,7 @@
 
 				var loader = new THREE.NRRDLoader();
 				//loader.load( "https://rawgit.com/valentina-s/volumeJS/master/data/eye.nrrd", function ( volume ) {
-				loader.load( "data/eye.nrrd", function ( volume ) {
+				loader.load( "data/256version_converted.nrrd", function ( volume ) {
 				//loader.load( "data/eye_raw.nrrd", function ( volume ) {
 					var geometry,
 						canvas,
@@ -172,7 +172,7 @@
 				var vtkloader = new THREE.OBJLoader();
         var material = new THREE.MeshBasicMaterial({color: 'yellow', side: THREE.DoubleSide});
 
-				vtkloader.load( "data/swc2vol2surf.obj", function (object ) {
+				vtkloader.load( "data/swc2Fiji2obj.obj", function (object ) {
 					object.traverse(function (child) {
 
             if (child instanceof THREE.Mesh) {
@@ -184,16 +184,20 @@
 					//geometry.computeVertexNormals();
 
 					//var mesh = new THREE.Mesh( geometry, vtkmaterial );
+					 object.position.x = -128
+					 object.position.y = -128
+					 object.position.z = -128
 					scene.add( object );
 					var visibilityControl = {
 						visible : false
 					};
 					gui.add(visibilityControl, "visible").name( "Model Visible").onChange( function () {
-						mesh.visible = visibilityControl.visible;
+					  object.visible = visibilityControl.visible;
 						renderer.render( scene, camera );
 					});
 
 				} );
+
 
 				// renderer
 
