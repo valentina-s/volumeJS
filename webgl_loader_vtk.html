@@ -38,6 +38,7 @@
 		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/controls/TrackballControls.js"></script>
 
 		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/loaders/VTKLoader.js"></script>
+		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/loaders/STLLoader.js"></script>
 
 		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/Detector.js"></script>
 		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/libs/stats.min.js"></script>
@@ -68,19 +69,19 @@
 				camera.add( dirLight );
 				camera.add( dirLight.target );
 				var material = new THREE.MeshLambertMaterial( { color: 0xffffff, side: THREE.DoubleSide } );
-				var loader = new THREE.VTKLoader();
-				loader.load( "https://raw.githubusercontent.com/valentina-s/volumeJS/vtk_loader/data/test_toy.vtk", function ( geometry ) {
+				var loader = new THREE.STLLoader();
+				loader.load( "data/test.stl", function ( geometry ) {
 
 					geometry.computeVertexNormals();
 					geometry.center();
 					var material = new THREE.MeshLambertMaterial( { color: 0x00ff00, side: THREE.DoubleSide } );
 					var mesh = new THREE.Mesh( geometry, material );
 					mesh.position.set( - 0.075, 0.005, 0 );
-					mesh.scale.multiplyScalar(10);
+					mesh.scale.multiplyScalar(0.0001);
 					scene.add( mesh );
 				} );
 				var loader1 = new THREE.VTKLoader();
-				loader1.load( 'https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/models/vtk/bunny.vtk', function ( geometry ) {
+				loader1.load( 'https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/models/vtk/bunny.vtu', function ( geometry ) {
 					geometry.computeVertexNormals();
 					geometry.center();
 					var material = new THREE.MeshLambertMaterial( { color: 0x00ff00, side: THREE.DoubleSide } );
@@ -131,6 +132,7 @@
 			function animate() {
 				requestAnimationFrame( animate );
 				controls.target.set(- 0.075, 0.005, 0 );
+				camera.updateProjectionMatrix()
 				controls.update();
 				renderer.render( scene, camera );
 				stats.update(- 0.075, 0.005, 0 );
