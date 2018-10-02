@@ -63,14 +63,14 @@
 		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/loaders/NRRDLoader.js"></script>
 		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/loaders/VTKLoader.js"></script>
 
-		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/Detector.js"></script>
+		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/WebGL.js"></script>
 		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/libs/stats.min.js"></script>
 		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/libs/zlib_and_gzip.min.js"></script>
 		<script src="https://rawgit.com/mrdoob/three.js/master/examples/js/libs/dat.gui.min.js"></script>
 
 		<script>
 
-			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+			if ( ! WEBGL.isWebGLAvailable() ) WEBGL.addGetWebGLMessage();
 
 			var container,
 				stats,
